@@ -17,4 +17,24 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Item Card Style -->
+    <style name="ItemStyle">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+    </style>
+
+    <!-- TextInput Style -->
+    <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="errorEnabled">true</item>
+        <item name="hintEnabled">true</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="cornerRadius">@dimen/view_radius</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/view_radius</item>
+        <item name="android:layout_height">@dimen/view_height</item>
+    </style>
+
 </resources>

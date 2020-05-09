@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Journey of Seed</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
-    <!-- Strings used for fragments for navigation -->
+
+    <!--item_list-->
+    <string name="placeholder_name">Apple</string>
+    <string name="placeholder_price">18.8</string>
+    <string name="placeholder_amount">12</string>
+
+    <!--dialog_add_item-->
+    <string name="text_name_error">Name should not be empty</string>
+    <string name="text_location_error">Location should not be empty</string>
+    <string name="text_name_helper">Apple</string>
+    <string name="text_location_helper">Highland</string>
+    <string name="text_name_hint">Add the name of the plant</string>
+    <string name="text_location_hint">Add the location of the plant</string>
+
 
 </resources>

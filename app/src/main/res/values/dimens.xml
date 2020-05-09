@@ -1,3 +1,14 @@
 <resources>
+    <!--activity_dashboard-->
+    <dimen name="recycler_margin">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--item_list-->
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+
+    <!--dialog_add_item-->
+    <dimen name="view_height">56dp</dimen>
+    <dimen name="view_radius">28dp</dimen>
+
 </resources>

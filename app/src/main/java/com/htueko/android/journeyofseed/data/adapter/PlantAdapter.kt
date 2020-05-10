@@ -34,6 +34,9 @@ class PlantAdapter internal constructor(context: Context) :
         notifyDataSetChanged()
     }
 
+    // to get the position of the plant item
+    fun getPlantAt(position: Int): PlantModel = mPlantList[position]
+
     inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // reference to plant model
         private lateinit var mPlant: PlantModel
@@ -42,7 +45,6 @@ class PlantAdapter internal constructor(context: Context) :
         private val name: AppCompatTextView = itemView.findViewById(R.id.tv_name_item)
         private val location: AppCompatTextView = itemView.findViewById(R.id.tv_location_item)
         private val localUrl: AppCompatImageView = itemView.findViewById(R.id.imv_image_item)
-        private val delete: AppCompatImageView = itemView.findViewById(R.id.imv_delete_item)
 
         fun bind(plant: PlantModel) {
             mPlant = plant

@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="lightergrey1">#504F4F</color>
-    <color name="lightergrey2">#5A5959</color>
-    <color name="darkergrey1">#3D3C3C</color>
-    <color name="darkergrey2">#333232</color>
+    <color name="colorLighterGrey1">#504F4F</color>
+    <color name="colorLighterGrey2">#5A5959</color>
+    <color name="colorDarkerGrey1">#3D3C3C</color>
+    <color name="colorDarkerGrey2">#333232</color>
 
 </resources>

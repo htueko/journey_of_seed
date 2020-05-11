@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.htueko.android.journeyofseed.R
 import com.htueko.android.journeyofseed.data.database.entity.PlantModel
+
 
 class PlantAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
@@ -16,6 +19,7 @@ class PlantAdapter internal constructor(context: Context) :
     // Cached copy of plant list
     private var mPlantList = emptyList<PlantModel>()
     private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private val that = context
 
     override fun getItemCount() = mPlantList.size
 
@@ -27,6 +31,7 @@ class PlantAdapter internal constructor(context: Context) :
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
         val item = mPlantList[position]
         holder.bind(item)
+
     }
 
     internal fun addPlant(plantList: List<PlantModel>) {
@@ -50,6 +55,8 @@ class PlantAdapter internal constructor(context: Context) :
             mPlant = plant
             name.text = plant.name
             location.text = plant.location
+            Glide.with(that).load(plant.localUrl.toUri()).placeholder(R.drawable.ic_add_circle)
+                .into(localUrl)
         }
 
     }

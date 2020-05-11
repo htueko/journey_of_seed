@@ -2,7 +2,12 @@
     <string name="app_name">Journey of Seed</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 
+    <!--permission-->
+    <string name="title_permission">Permission Needed</string>
+    <string name="take_camera_explanation">In order to take picture with camera, you needed this permission</string>
+    <string name="pick_picture_explanation">In order to pick picture from gallery, you needed this permission</string>
 
     <!--item_list-->
     <string name="placeholder_name">Apple</string>

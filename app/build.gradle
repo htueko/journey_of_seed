@@ -89,4 +89,11 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
+    // image cropping library
+    api "com.theartofdev.edmodo:android-image-cropper:$android_image_cropper"
+
+    // glide image loading library
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
 }

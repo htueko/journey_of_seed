@@ -4,7 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDarkerGrey1"
     tools:context=".ui.InsertActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imv_image_insert"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:clickable="true"
+        android:drawingCacheQuality="high"
+        android:focusable="true"
+        android:src="@drawable/placeholder_logo"
+        app:civ_border_color="#FFfefefe"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imv_camera_insert"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:drawingCacheQuality="high"
+        android:focusable="true"
+        android:src="@drawable/ic_photo_camera"
+        app:civ_border_color="#FFfefefe"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_image_insert"
+        app:layout_constraintStart_toEndOf="@+id/imv_image_insert"
+        app:srcCompat="@drawable/ic_photo_camera"
+        tools:ignore="VectorDrawableCompat" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinput_name_insert"
@@ -23,6 +57,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_name_insert"
             android:layout_width="match_parent"
+            android:imeOptions="actionNext"
             android:layout_height="match_parent"
             android:inputType="textPersonName" />
 
@@ -48,6 +83,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_location_insert"
             android:layout_width="match_parent"
+            android:imeOptions="actionGo"
             android:layout_height="match_parent"
             android:inputType="textPersonName" />
 

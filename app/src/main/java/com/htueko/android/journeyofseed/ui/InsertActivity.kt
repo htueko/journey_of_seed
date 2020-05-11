@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -58,7 +59,9 @@ class InsertActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            when (resultCode) {
+            Log.d("TAG result: ", "$resultCode")
+            Log.d("TAG request: ", "$requestCode")
+            when (requestCode) {
                 IMAGE_PICK_CODE -> {
                     // get image from gallery
                     val imageUri = data?.data

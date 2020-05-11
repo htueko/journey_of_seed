@@ -1,13 +1,34 @@
-# journey_of_seed
-A journey of seed.
+# Journey of Seed
+**A journey of a seed.**
 
-**Journey Of Seed**
+Journey of Seed is a demostration of building app from scratch to most possible way.
 
-version 0.1
+- MVVM design pattern
+- Material Design
+- Kotlin
+- Coroutines
+- Room
+- Navigation Components
+- Lifecycle
+- Glide
+- Android Image Cropper
+- Cricle Image View
 
+---
+## version 0.2
+Goal
+- delete plant (swipe to delete)
+- get image from gallery
+- take image with camera
+- update ui
+
+---
+## version 0.1
 Goal
 
-1 -> can add plant name
-2 -> can add location of plant mainly found
-3 -> can remove plant
-4 -> can update plant
+- can add plant name
+- can add location of plant mainly found
+- can remove plant (finished at version 0.2)
+- can update plant (pending)
+
+---

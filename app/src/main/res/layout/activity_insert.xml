@@ -33,19 +33,18 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imv_camera_insert"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:clickable="true"
         android:drawingCacheQuality="high"
         android:focusable="true"
         android:src="@drawable/ic_photo_camera"
         app:civ_border_color="#FFfefefe"
         app:civ_border_width="2dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_image_insert"
+        app:layout_constraintStart_toEndOf="@+id/imv_image_insert"
         app:srcCompat="@drawable/ic_photo_camera"
         tools:ignore="VectorDrawableCompat" />
 

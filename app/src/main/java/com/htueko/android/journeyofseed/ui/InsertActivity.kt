@@ -2,12 +2,13 @@ package com.htueko.android.journeyofseed.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.htueko.android.journeyofseed.R
@@ -15,6 +16,7 @@ import com.htueko.android.journeyofseed.data.database.entity.PlantModel
 import com.htueko.android.journeyofseed.ui.viewmodel.PlantViewModel
 import com.htueko.android.journeyofseed.util.*
 import kotlinx.android.synthetic.main.activity_insert.*
+import java.io.File
 
 
 class InsertActivity : AppCompatActivity() {
@@ -25,6 +27,9 @@ class InsertActivity : AppCompatActivity() {
 
     // to get the plant properties from user (title, location and image uri)
     private lateinit var plantModel: PlantModel
+
+    // to get the high resolution image from camera
+    private lateinit var imageFile: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +44,6 @@ class InsertActivity : AppCompatActivity() {
             imv_camera_insert.hide()
         } else {
             imv_camera_insert.setOnClickListener {
-                Log.d("TAG btn: ", "Button clicked")
                 requestAndTakeImageWithCamera()
             }
         }
@@ -64,25 +68,19 @@ class InsertActivity : AppCompatActivity() {
     // to get the return result (here is photo from gallery)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
-            Log.d("TAG result: ", "$resultCode")
-            Log.d("TAG request: ", "$requestCode")
             when (requestCode) {
                 IMAGE_PICK_CODE -> {
                     // get image from gallery
                     val imageUri = data?.data
-                    Log.d("TAG IPC:", "$imageUri")
                     plantModel.localUrl = imageUri.toString()
                     Glide.with(this).load(imageUri).into(imv_image_insert)
                 }
                 IMAGE_TAKE_CODE -> {
                     // get the image from camera
-                    val captureImage = data?.extras?.get("data") as Bitmap
-
-                    Log.d("TAG IPC bitmap:", "$captureImage")
-                    Log.d("TAG IPC: string", "$captureImage")
-                    plantModel.localUrl = captureImage.toString()
-                    // set image to imageview
-                    imv_image_insert.setImageBitmap(captureImage)
+                    val imageTaken = BitmapFactory.decodeFile(imageFile.absolutePath)
+                    val imagePath = imageFile.absolutePath
+                    plantModel.localUrl = imagePath
+                    Glide.with(this).load(imageTaken).into(imv_image_insert)
                 }
                 else -> {
                     Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
@@ -129,15 +127,6 @@ class InsertActivity : AppCompatActivity() {
 
     }
 
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, IMAGE_TAKE_CODE)
-            }
-        }
-    }
-
-
     // request to get image from gallery
     private fun requestAndGetImageFromGallery() {
         PermissionObject.toCheckAndRequestPermissions(
@@ -152,14 +141,22 @@ class InsertActivity : AppCompatActivity() {
     // to get image from Gallery
     private fun pickImageFromGallery() {
         //Intent to pick image
-        val intent = Intent(Intent.ACTION_PICK)
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
+        val mimeTypes = arrayOf("image/jpeg", "image/png", "image/jpg")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+        }
+        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+        intent.also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(intent, IMAGE_PICK_CODE)
+            }
+        }
     }
 
     // request to take image from camera
     private fun requestAndTakeImageWithCamera() {
-        Log.d("TAG btn: ", "requestandtakeimage")
         PermissionObject.toCheckAndRequestPermissions(
             activity = this@InsertActivity,
             permissions = arrayOf(PermissionObject.CAMERA_PERMISSION),
@@ -171,11 +168,19 @@ class InsertActivity : AppCompatActivity() {
 
     // to take the image with camera
     private fun takeImageWithCamera() {
-        Log.d("TAG btn: ", "open camera")
-        // open camera
+        imageFile = createImageFile(this)!!
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, IMAGE_TAKE_CODE)
+        val fileProvider = FileProvider.getUriForFile(
+            this,
+            "com.htueko.android.journeyofseed.fileprovider",
+            imageFile
+        )
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
+        intent.also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(intent, IMAGE_TAKE_CODE)
+            }
+        }
     }
-
 
 }

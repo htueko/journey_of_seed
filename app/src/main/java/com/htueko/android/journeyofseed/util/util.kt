@@ -2,15 +2,11 @@ package com.htueko.android.journeyofseed.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
-import android.provider.MediaStore
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.core.content.FileProvider
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -97,28 +93,4 @@ fun createImageFile(context: Context): File? {
         null
     }
     return file
-}
-
-
-// to take image with camera
-private fun takeImageWithCamera(context: Context, code: Int) {
-    try {
-        val imageFile = createImageFile(context)
-        if (imageFile != null) {
-            var imagePath = imageFile.absolutePath
-            // get the uri
-            val imageUri = FileProvider.getUriForFile(
-                context,
-                "com.htueko.android.journeyofseed.provider",
-                imageFile
-            )
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-            (context as Activity).startActivityForResult(intent, code)
-        } else {
-            Toast.makeText(context, "Error while opening camera", Toast.LENGTH_LONG).show()
-        }
-    } catch (e: IOException) {
-        e.printStackTrace()
-    }
 }

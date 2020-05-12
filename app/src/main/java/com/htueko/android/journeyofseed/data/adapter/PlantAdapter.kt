@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.htueko.android.journeyofseed.R
@@ -55,8 +54,7 @@ class PlantAdapter internal constructor(context: Context) :
             mPlant = plant
             name.text = plant.name
             location.text = plant.location
-            Glide.with(that).load(plant.localUrl.toUri()).placeholder(R.drawable.ic_add_circle)
-                .into(localUrl)
+            Glide.with(that).load(plant.localUrl).into(localUrl)
         }
 
     }

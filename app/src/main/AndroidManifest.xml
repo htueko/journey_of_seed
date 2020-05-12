@@ -34,7 +34,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.htueko.android.journeyofseed.provider"
+            android:authorities="com.htueko.android.journeyofseed.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

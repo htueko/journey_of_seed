@@ -1,7 +1,7 @@
 # Journey of Seed
 **A journey of a seed.**
 
-Journey of Seed is a demostration of building app from scratch to most possible way.
+Journey of Seed is a demonstration of building app from scratch to most possible way.
 
 - MVVM design pattern
 - Material Design
@@ -12,7 +12,15 @@ Journey of Seed is a demostration of building app from scratch to most possible 
 - Lifecycle
 - Glide
 - Android Image Cropper
-- Cricle Image View
+- Circle Image View
+
+---
+## version 0.3
+Goal
+- search function
+- Overall Theme
+- setting
+- information about plant (network call)
 
 ---
 ## version 0.2

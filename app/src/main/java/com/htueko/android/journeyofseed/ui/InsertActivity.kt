@@ -6,16 +6,19 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputLayout
 import com.htueko.android.journeyofseed.R
 import com.htueko.android.journeyofseed.data.database.entity.PlantModel
 import com.htueko.android.journeyofseed.ui.viewmodel.PlantViewModel
 import com.htueko.android.journeyofseed.util.*
 import kotlinx.android.synthetic.main.activity_insert.*
+import kotlinx.android.synthetic.main.activity_insert.view.*
 import java.io.File
 
 
@@ -45,6 +48,46 @@ class InsertActivity : AppCompatActivity() {
         } else {
             imv_camera_insert.setOnClickListener {
                 requestAndTakeImageWithCamera()
+            }
+        }
+
+        // request the focus to name TextField
+        textinput_name_insert.requestFocus()
+        // show the keyboard
+        textinput_name_insert.showKeyboard(this)
+        // set the end icon
+        if (textinput_name_insert.hasFocus()) {
+            setEndIconDrawable(textinput_name_insert)
+        }
+
+        // to capture the soft keyboard next key pressed
+        edt_name_insert.setOnEditorActionListener { v, actionId, event ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_NEXT -> {
+                    // request the focus to name TextField
+                    textinput_location_insert.requestFocus()
+                    // show the keyboard
+                    textinput_location_insert.showKeyboard(this)
+                    // set the end icon
+                    if (textinput_location_insert.hasFocus()) {
+                        setEndIconDrawable(textinput_location_insert)
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // to capture the soft keyboard done key pressed
+        edt_location_insert.setOnEditorActionListener { v, actionId, event ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    val name = textinput_name_insert.editText?.text.toString().trim()
+                    val location = textinput_location_insert.editText?.text.toString().trim()
+                    validate(name, location)
+                    true
+                }
+                else -> false
             }
         }
 
@@ -91,11 +134,26 @@ class InsertActivity : AppCompatActivity() {
         }
     }
 
+    private fun setEndIconDrawable(view: TextInputLayout) {
+        if (view.hasFocus()) {
+            // set the cancel icon at the end of TextField
+            view.setEndIconDrawable(R.drawable.ic_cancel)
+            // when pressed the end icon of the TextField
+            view.setEndIconOnClickListener {
+                // clear the text
+                view.editText?.text?.clear()
+            }
+        }
+    }
+
 
     // to validate the user input and act according to result
     private fun validate(name: String, location: String) {
         if (name.isNotEmpty() && location.isNotEmpty()) {
             // input are not empty
+            // set the end icon as check mark
+            textinput_name_insert.setEndIconDrawable(R.drawable.ic_check_circle)
+            textinput_location_insert.setEndIconDrawable(R.drawable.ic_check_circle)
             // add name and location to plantModel we declare at the top
             plantModel.name = name
             plantModel.location = location
@@ -113,6 +171,8 @@ class InsertActivity : AppCompatActivity() {
                 textinput_name_insert.apply {
                     error = resources.getString(R.string.text_name_error)
                     requestFocus()
+                    // to set the end icon
+                    setEndIconDrawable(textinput_name_insert)
                     showKeyboard(this@InsertActivity)
                 }
             } else {
@@ -120,6 +180,8 @@ class InsertActivity : AppCompatActivity() {
                 textinput_location_insert.apply {
                     error = resources.getString(R.string.text_location_error)
                     requestFocus()
+                    // to set the end icon
+                    setEndIconDrawable(textinput_location_insert)
                     showKeyboard(this@InsertActivity)
                 }
             }

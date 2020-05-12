@@ -44,7 +44,6 @@ class DashboardActivity : AppCompatActivity() {
 
         fab_dashboard.setOnClickListener {
             startActivity(Intent(this, InsertActivity::class.java))
-            finish()
         }
 
     }

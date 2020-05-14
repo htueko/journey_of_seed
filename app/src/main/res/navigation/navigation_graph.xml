@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/localFragment">
+
+    <fragment
+        android:id="@+id/localFragment"
+        android:name="com.htueko.android.journeyofseed.ui.fragment.LocalFragment"
+        android:label="fragment_local"
+        tools:layout="@layout/fragment_local">
+        <action
+            android:id="@+id/action_localFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.htueko.android.journeyofseed.ui.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

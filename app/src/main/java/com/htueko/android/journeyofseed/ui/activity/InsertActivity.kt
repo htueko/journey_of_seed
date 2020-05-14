@@ -1,9 +1,8 @@
-package com.htueko.android.journeyofseed.ui
+package com.htueko.android.journeyofseed.ui.activity
 
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.inputmethod.EditorInfo
@@ -143,9 +142,10 @@ class InsertActivity : AppCompatActivity() {
                 // clear the text
                 view.editText?.text?.clear()
             }
+        } else {
+            view.isEndIconVisible = false
         }
     }
-
 
     // to validate the user input and act according to result
     private fun validate(name: String, location: String) {
@@ -203,13 +203,9 @@ class InsertActivity : AppCompatActivity() {
     // to get image from Gallery
     private fun pickImageFromGallery() {
         //Intent to pick image
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        val intent = Intent(Intent.ACTION_PICK)
+        // type of image (format)
         intent.type = "image/*"
-        val mimeTypes = arrayOf("image/jpeg", "image/png", "image/jpg")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-        }
-        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         intent.also { takePictureIntent ->
             takePictureIntent.resolveActivity(packageManager)?.also {
                 startActivityForResult(intent, IMAGE_PICK_CODE)

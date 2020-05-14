@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkerGrey1"
-    tools:context=".ui.DashboardActivity">
+    tools:context=".ui.activity.DashboardActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_dashboard"
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorDarkerGrey2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_anchorGravity="center"
+        app:navGraph="@navigation/navigation_graph"
+        tools:layout="@layout/fragment_local" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_dashboard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/recycler_margin"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorLighterGrey1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_dashboard" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dashboard"
@@ -39,8 +23,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_anchor="@id/bottomAppBar"
         app:srcCompat="@drawable/ic_add_circle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:fabAnimationMode="slide"
+        app:fabCradleMargin="8dp"
+        app:fabCradleVerticalOffset="8dp"
+        app:hideOnScroll="true"
+        app:menu="@menu/local_option_menu"
+        app:navigationIcon="@drawable/ic_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkerGrey1"
-    tools:context=".ui.InsertActivity">
+    tools:context=".ui.activity.InsertActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imv_image_insert"

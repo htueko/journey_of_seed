@@ -22,5 +22,8 @@
     <string name="text_name_hint">Add the name of the plant</string>
     <string name="text_location_hint">Add the location of the plant</string>
 
+    <!--local_search_option_menu-->
+    <string name="text_search">Search</string>
+    <string name="text_search_hint">Search the plant…</string>
 
 </resources>

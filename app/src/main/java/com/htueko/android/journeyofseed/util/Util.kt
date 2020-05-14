@@ -7,6 +7,11 @@ import android.os.Build
 import android.os.Environment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.htueko.android.journeyofseed.data.adapter.PlantAdapter
+import com.htueko.android.journeyofseed.data.adapter.SwipeToDelete
+import com.htueko.android.journeyofseed.ui.viewmodel.PlantViewModel
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -79,7 +84,7 @@ fun getCurrentLocale(context: Context): Locale? {
 
 // to create image file
 fun createImageFile(context: Context): File? {
-    var file: File? = null
+    var file: File?
     file = try {
         // Create an image file name
         val local = getCurrentLocale(context)
@@ -93,4 +98,21 @@ fun createImageFile(context: Context): File? {
         null
     }
     return file
+}
+
+// to swipe left or right to delete from item from recycler view
+fun swipeToDelete(
+    adapter: PlantAdapter,
+    viewModel: PlantViewModel,
+    recyclerView: RecyclerView
+) {
+    val swipeHandler = object : SwipeToDelete() {
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            val plant = adapter.getPlantAt(position)
+            viewModel.deletePlant(plant)
+        }
+    }
+    val itemTouchHelper = ItemTouchHelper(swipeHandler)
+    itemTouchHelper.attachToRecyclerView(recyclerView)
 }

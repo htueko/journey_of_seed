@@ -116,3 +116,4 @@ fun swipeToDelete(
     val itemTouchHelper = ItemTouchHelper(swipeHandler)
     itemTouchHelper.attachToRecyclerView(recyclerView)
 }
+

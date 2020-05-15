@@ -11,4 +11,19 @@
     <dimen name="view_height">56dp</dimen>
     <dimen name="view_radius">28dp</dimen>
 
+    <!--Typography-->
+    <dimen name="textAppearanceHeadline1">96dp</dimen>
+    <dimen name="textAppearanceHeadline2">60dp</dimen>
+    <dimen name="textAppearanceHeadline3">48dp</dimen>
+    <dimen name="textAppearanceHeadline4">38dp</dimen>
+    <dimen name="textAppearanceHeadline5">24dp</dimen>
+    <dimen name="textAppearanceHeadline6">20dp</dimen>
+    <dimen name="textAppearanceSubtitle1">16dp</dimen>
+    <dimen name="textAppearanceSubtitle2">14dp</dimen>
+    <dimen name="textAppearanceBody1">16dp</dimen>
+    <dimen name="textAppearanceBody2">14dp</dimen>
+    <dimen name="textAppearanceCaption">12dp</dimen>
+    <dimen name="textAppearanceButton">14dp</dimen>
+    <dimen name="textAppearanceOverline">12dp</dimen>
+
 </resources>

@@ -3,6 +3,7 @@ package com.htueko.android.journeyofseed.util
 import android.app.Activity
 import android.app.SearchManager
 import android.content.Context
+import android.net.ConnectivityManager
 import android.util.DisplayMetrics
 import androidx.core.content.ContextCompat
 
@@ -10,6 +11,9 @@ import androidx.core.content.ContextCompat
 fun Context.getSearchManager() =
     getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
+// to get the connectivity manager
+fun Context.getConnectivityManager() =
+    getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
 fun Activity.screenWidth(): Int {
     val metrics: DisplayMetrics = DisplayMetrics()

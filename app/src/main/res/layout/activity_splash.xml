@@ -10,26 +10,26 @@
         android:id="@+id/tv_title_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="64dp"
         android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.MyTheme.Headline4"
-        app:layout_constraintBottom_toTopOf="@+id/tv_description_splash"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_description_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:text="@string/app_description"
         android:textAppearance="@style/TextAppearance.MyTheme.Headline5"
-        app:layout_constraintBottom_toTopOf="@+id/lottie_splash"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_splash" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_splash"
+        android:id="@+id/lottie_plant_splash"
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
@@ -39,6 +39,47 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/sprout_plant" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_no_connection_splash"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/no_connection" />
+
+    <TextView
+        android:id="@+id/tv_no_connection_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_no_connection"
+        android:textAppearance="@style/TextAppearance.MyTheme.Headline5"
+        android:textColor="?attr/colorError"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottie_no_connection_splash"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="595dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_splash"
+        style="?attr/switchStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_no_connection_splash" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

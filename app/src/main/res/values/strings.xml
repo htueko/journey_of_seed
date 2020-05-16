@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Journey of Seed</string>
     <string name="app_description">A Journey of a Seed.</string>
+    <string name="text_no_connection">Oop! there is no connection!</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>

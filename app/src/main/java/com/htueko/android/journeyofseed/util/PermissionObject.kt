@@ -13,6 +13,7 @@ object PermissionObject {
     const val CAMERA_PERMISSION = android.Manifest.permission.CAMERA
     const val READ_EXTERNAL_STORAGE_PERMISSION = android.Manifest.permission.READ_EXTERNAL_STORAGE
     const val WRITE_EXTERNAL_STORAGE_PERMISSION = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    const val ACCESS_COARSE_LOCATION_PERMISSION = android.Manifest.permission.ACCESS_COARSE_LOCATION
 
     // to check permission
     // return true if permission is granted
